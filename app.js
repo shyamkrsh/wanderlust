@@ -3,6 +3,7 @@ if(process.env.NODE_ENV != "productions"){
 }
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT;
 const mongoose = require("mongoose");
 const path= require("path");
 const methodOverride = require("method-override");
@@ -16,12 +17,13 @@ const User = require("./models/user.js");
 
 
 
+
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/reviews.js");
 const userRouter = require("./routes/user.js");
 
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.MONGO_URL;
 main().then(()=>{
     console.log("connected to DB");
 }).catch((err)=>{
@@ -83,6 +85,6 @@ app.use((err, req, res, next) => {
 })  
 
 
-app.listen(8080, ()=>{
-    console.log("server is listening to the port : 8080");
+app.listen(PORT, ()=>{
+    console.log(`server is listening to the port : ${PORT}`);
 })
