@@ -3,7 +3,7 @@ if(process.env.NODE_ENV != "productions"){
 }
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 const mongoose = require("mongoose");
 const path= require("path");
 const methodOverride = require("method-override");
